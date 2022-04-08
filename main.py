@@ -22,7 +22,7 @@ def Compare(a):
 def Turn(b, c):
     while True:
         a = input(c)
-        if field[int(int(a) // 3.1)][(int(a) % 3)-1] != ("X", "O"):
+        if (field[int(int(a) // 3.1)][(int(a) % 3)-1]) != ("X" or "O"):
             field[int(int(a) // 3.1)][(int(a) % 3)-1] = b
         else:
             print("\n" * 3, "You can't go there")
