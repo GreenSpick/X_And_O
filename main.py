@@ -15,11 +15,9 @@ def Restart():
 def Compare(a):
     global field, compare_field
     for i in range(8):
-        if field[compare_field[i][0] // 4][(compare_field[i][0] % 3)-1] == a:
-            if field[compare_field[i][1] // 4][(compare_field[i][1] % 3)-1] == a:
-                if field[compare_field[i][2] // 4][(compare_field[i][2] % 3)-1] == a:
-                    print("\nWin " + a)
-                    Restart()
+        if (field[compare_field[i][0] // 4][(compare_field[i][0] % 3)-1] == field[compare_field[i][1] // 4][(compare_field[i][1] % 3)-1] == field[compare_field[i][2] // 4][(compare_field[i][2] % 3)-1]):
+            print("\nWin " + a)
+            Restart()
 
 def Turn(b, c):
     while True:
