@@ -1,25 +1,31 @@
 def Draw():
     global field
-    print("\n", field[0], "|", field[1], "|", field[2], "\n",  "---------", "\n", field[3], "|", field[4], "|", field[5], "\n", "---------", "\n", field[6], "|", field[7], "|", field[8])
+    print("-------------")
+    for i in range(3):
+        print("|", field[i][0], "|", field[i][1], "|", field[i][2], "|")
+        print("-------------")
 
 def Restart():
-    global field, p1, p2, p3, p4, p5, p6, p7, p8, p9, restart
-    p1, p2, p3, p4, p5, p6, p7, p8, p9 = "1", "2", "3", "4", "5", "6", "7", "8", "9"
-    field = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
+    global field, compare_field, restart
+    compare_field = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+    field = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     Draw()
     restart = True
 
 def Compare(a):
-    global field
-    if ((a == field[0] and a == field[1] and a == field[2]) or (a == field[3] and a == field[4] and a == field[5]) or (a == field[6] and a == field[7] and a == field[8]) or (a == field[0] and a == field[3] and a == field[6]) or (a == field[1] and a == field[4] and a == field[7]) or (a == field[2] and a == field[5] and a == field[8]) or (a == field[0] and a == field[4] and a == field[8]) or (a == field[6] and a == field[4] and a == field[2])):
-        Restart()
-        print("\nWin " + a)
+    global field, compare_field
+    for i in range(8):
+        if field[compare_field[i][0] // 4][(compare_field[i][0] % 3)-1] == a:
+            if field[compare_field[i][1] // 4][(compare_field[i][1] % 3)-1] == a:
+                if field[compare_field[i][2] // 4][(compare_field[i][2] % 3)-1] == a:
+                    print("\nWin " + a)
+                    Restart()
 
 def Turn(b, c):
     while True:
         a = input(c)
-        if field[int(a) - 1] != "X" and field[int(a) - 1] != "O":
-            field[int(a) - 1] = b
+        if field[int(a) // 4][(int(a) % 3)-1] != ("X", "O"):
+            field[int(a) // 4][(int(a) % 3)-1] = b
         else:
             print("\n" * 3, "You can't go there")
             Draw()
@@ -27,12 +33,11 @@ def Turn(b, c):
         Draw()
         break
 
-p1, p2, p3, p4, p5, p6, p7, p8, p9 = "1", "2", "3", "4", "5", "6", "7" ,"8" ,"9"
-field = [p1, p2, p3, p4, p5, p6, p7, p8, p9]
+compare_field = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+field = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 restart = False
-
+Draw()
 while True:
-    Draw()
     Turn("X", "\nPut X : ")
     Compare("X")
     if restart == True:
