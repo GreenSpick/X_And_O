@@ -15,15 +15,15 @@ def Restart():
 def Compare(a):
     global field, compare_field
     for i in range(8):
-        if (field[compare_field[i][0] // 4][(compare_field[i][0] % 3)-1] == field[compare_field[i][1] // 4][(compare_field[i][1] % 3)-1] == field[compare_field[i][2] // 4][(compare_field[i][2] % 3)-1]):
+        if (field[int(compare_field[i][0] // 3.1)][(compare_field[i][0] % 3)-1] == field[int(compare_field[i][1] // 3.1)][(compare_field[i][1] % 3)-1] == field[int(compare_field[i][2] // 3.1)][(compare_field[i][2] % 3)-1]):
             print("\nWin " + a)
             Restart()
 
 def Turn(b, c):
     while True:
         a = input(c)
-        if field[int(a) // 4][(int(a) % 3)-1] != ("X", "O"):
-            field[int(a) // 4][(int(a) % 3)-1] = b
+        if field[int(int(a) // 3.1)][(int(a) % 3)-1] != ("X", "O"):
+            field[int(int(a) // 3.1)][(int(a) % 3)-1] = b
         else:
             print("\n" * 3, "You can't go there")
             Draw()
@@ -35,6 +35,8 @@ compare_field = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9
 field = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 restart = False
 Draw()
+print(9//3.1)
+
 while True:
     Turn("X", "\nPut X : ")
     Compare("X")
