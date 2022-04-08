@@ -10,7 +10,6 @@ def Restart():
     compare_field = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
     field = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     Draw()
-    restart = True
 
 def Compare(a):
     global field, compare_field
@@ -33,14 +32,10 @@ def Turn(b, c):
 
 compare_field = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
 field = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-restart = False
 Draw()
 
 while True:
     Turn("X", "\nPut X : ")
     Compare("X")
-    if restart == True:
-        restart = False
-        continue
     Turn("O", "\nPut O : ")
     Compare("O")
